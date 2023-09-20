@@ -1,0 +1,24 @@
+.column {
+    float: left;
+    width: 25%;
+  }
+  
+  .row:after {
+    content: "";
+    display: table;
+  }
+
+.increaseQuantity {
+    width: 250px;
+    height: 50px;
+}
+
+.decreaseQuantity {
+    width: 250px;
+    height: 50px;
+}
+
+.tt {
+    float: right;
+
+}

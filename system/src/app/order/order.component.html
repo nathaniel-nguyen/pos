@@ -1,3 +1,21 @@
 <h2>Order</h2>
 
-<a routerLink=""><button>Home</button></a>
+<div class="row">
+    <div class="column">
+        <div *ngFor="let item of menuItems">
+            <button class="increaseQuantity" (click)="increaseQuantity(item.id)">{{item.id}}. {{item.name}}: ${{item.price}}</button>
+        </div>
+        <br>
+        <a routerLink=""><button>Home</button></a>
+    </div>
+    <div class="column">
+        <h4>Current Order: </h4>
+            <div *ngFor="let item of order.items">
+                <button class="decreaseQuantity" (click)="decreaseQuantity(item.id)">{{item.id}}. {{item.name}}: ${{item.price}}</button>
+            </div>
+        <div class="tt">
+            <p>Tax: ${{tax}}</p>
+            <p>Total: ${{total}}</p>
+        </div>
+    </div>
+  </div>
