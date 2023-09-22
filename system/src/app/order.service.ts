@@ -17,16 +17,26 @@ export class OrderService {
     { id: 10, name: "Shrimp Egg Rolls", price: 8.00 },
   ];
 
-  order: { items: MenuItem[], transaction: number, total: number, tax: number } = { items: [], transaction: 1, total: 0, tax: 0 };
+  order: { items: MenuItem[], transaction: number, total: number, tax: number, subtotal: number } = { items: [], transaction: 1, total: 0, tax: 0, subtotal: 0 };
+  quantityMap = new Map<number, any>();
 
   constructor() { }
 
-  getTotal(): number {
-    return Math.round(this.getOrder().total * 1.07 * 100)/100;
+  getQuantityMap() {
+    return this.quantityMap;
+  }
+
+  getSubtotal(): number {
+    return this.order.subtotal;
+  }
+
+  getTotal(subtotal: number, tax: number): number {
+    let total = subtotal + tax;
+    return total;
   }
 
   getTax(): number {
-    return Math.round(this.getOrder().total * 0.07 * 100)/100;
+    return (Math.round(this.order.subtotal * 0.07 * 100) / 100);
   }
 
   getMenuItems() {
@@ -47,7 +57,8 @@ export class OrderService {
   }
 
   newOrder(): void {
-    this.order = { items: [], transaction: this.order.transaction + 1, total: 0, tax: 0 };
+    this.order = { items: [], transaction: this.order.transaction + 1, total: 0, tax: 0, subtotal: 0 };
+    this.quantityMap.clear;
   }
 
   getItem(id: number): MenuItem {
@@ -55,19 +66,26 @@ export class OrderService {
   }
 
   addItemToOrder(id: number): void {
-    this.order.items.push(this.getItem(id));
-    this.order.tax += Math.round(this.getItem(id).price * 0.07 * 100)/100
-    this.order.total += this.getItem(id).price;
-  }
-
-  removeItemFromOrder(id: number): void {
-    if (this.order.items.indexOf(this.getItem(id)) !== -1) {
-      this.order.items.splice(this.order.items.lastIndexOf(this.getItem(id)), 1);
-      this.order.tax -= Math.round(this.getItem(id).price * 0.07 * 100) / 100;
-      this.order.total -= this.getItem(id).price;
+    if (!this.quantityMap.has(id)) {
+      this.order.items.push(this.getItem(id));
+      this.quantityMap.set(id, 1);
+      this.getOrder().subtotal += this.getItem(id).price;
+    } else {
+      this.quantityMap.set(id, this.quantityMap.get(id) + 1);
+      this.getOrder().subtotal += this.getItem(id).price;
     }
   }
 
+  removeItemFromOrder(id: number): void {
+    if (this.quantityMap.get(id) === 1) {
+      this.order.items.splice(this.order.items.lastIndexOf(this.getItem(id)), 1);
+      this.quantityMap.delete(id);
+      this.getOrder().subtotal -= this.getItem(id).price;
+    } else if (this.quantityMap.get(id) > 1) {
+      this.quantityMap.set(id, this.quantityMap.get(id) - 1);
+      this.getOrder().subtotal -= this.getItem(id).price;
+    }
+  }
 }
 
 export interface MenuItem {
