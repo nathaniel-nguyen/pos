@@ -1,27 +1,32 @@
+<body>
+
 <h2 class="title">Order</h2>
 
 <div class="row">
-    <div class="column1">
+    <div class="column2">
         <h4 class="menuItems">Menu Items</h4>
         <div *ngFor="let item of menuItems">
             <button class="increaseQuantity" (click)="increaseQuantity(item.id)">{{item.id}}. {{item.name}}: ${{item.price}}</button>
         </div>
-        <br>
-        <a routerLink=""><button>Home</button></a>
-        <p></p>
     </div>
-    <div class="column2">
+    <div class="column3">
         <h4 class="currentOrder">Current Order</h4>
+        <a routerLink=""><button class="buttons">Home</button></a><button (click)="newOrder()" class="buttons">New Order</button><button class="buttons">Submit Order</button>
         <div class="tt">
             <p>Subtotal: ${{subtotal}}</p>
             <p>Tax: ${{tax}}</p>
             <p>Total: ${{total}}</p>
         </div>
-        <div *ngFor="let item of order.items">
-            <button class="decreaseQuantity" (click)="decreaseQuantity(item.id)">{{item.id}}. {{item.name}}: ${{item.price}}</button>
+        <div *ngFor="let item of items; let i = index">
+            <button class="decreaseQuantity" (click)="decreaseQuantity(getMenuItemID(item))">{{getMenuItemID(item)}}. {{getMenuItemName(item)}}: ${{getMenuItemPrice(item)}} x {{amounts[i]}}</button>
         </div>
-        <div *ngFor="let values of quantityMapArrayValues">
-            x <strong>{{values}}</strong>
+     </div>
+    <div class="column1">
+        <h4 class="foodTypes">Food Types</h4>
+        <div *ngFor="let type of foodTypes">
+            <button class="type">{{type.name}}</button>
         </div>
      </div>
 </div>
+
+</body>

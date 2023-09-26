@@ -1,48 +1,112 @@
 .title {
     text-align: center;
-    background-color: lightblue;
-    border-color: lightskyblue;
     margin: 0;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: rgb(30, 35, 66);
+    color: white;
+}
+
+.foodTypes {
+    margin: 0;
+    padding: 5px;
+    background-color: rgb(30, 35, 66);
+    text-align: center;
+    color: white;
 }
 
 .menuItems {
-    background-color: lightblue;
-    border-color: lightskyblue;
     margin: 0;
+    padding: 5px;
+    background-color: rgb(30, 35, 66);
+    text-align: center;
+    color: white;
 }
 
 .currentOrder {
-    background-color: lightblue;
-    border-color: lightskyblue;
-    margin:0
+    padding: 5px;
+    margin: 0;
+    text-align: center;
+    background-color: rgb(30, 35, 66);
+    color: white;
 }
 
-.column1 {
+.column1{
     float: left;
-    width: 75%;
-    background-color: lightblue;
-  }
+    width: 15%;
+    height: 700px;
+    background-color: rgb(30, 35, 66);
+    border-bottom-left-radius: 10px;
+}
 
 .column2 {
-    background-color: lightblue;
-    float: left;
-    width: 25%;
-    height: 100%;
+    margin: 0;
+    display: inline-block;
+    width: 50%;
+    height: 700px;
+    background-color: rgb(30, 35, 66);
+}
+
+.column3 {
+    float: right;
+    margin: 0;
+    width: 35%;
+    height: 700px;
+    background-color: rgb(30, 35, 66);
+    border-bottom-right-radius: 10px;
 }
 
 .increaseQuantity {
-    background-color: lightgreen;
-    border: 3;
-    border-color: rgb(179, 219, 179);
-    width: 100px;
-    height: 75px;
+    display: inline-block;
+    margin:2px;
+    background-color: rgb(95, 98, 139);
+    border: 10;
+    border-radius: 5px;
+    border-color: rgb(117, 129, 173);
+    font-size: x-small;
+    width: 80px;
+    height: 60px;
+    color: white;
+    float: left;
 }
 
 .decreaseQuantity {
-    background-color: lightcoral;
+    text-align: left;
+    background-color: rgb(95, 98, 139);
     border: 3;
-    border-color: rgb(246, 167, 167);
+    border-color: rgb(117, 129, 173);
+    color: white;
+    width: 100%;
 }
 
+.type {
+    margin:2px;
+    background-color: rgb(95, 98, 139);
+    border: 10;
+    border-radius: 5px;
+    border-color: rgb(117, 129, 173);
+    font-size: x-small;
+    width: 100px;
+    height: 60px;
+    color: white;
+}
+
+
 .tt {
+    text-align: left;
+    color: white;
+    width: 100%;
+}
+
+.buttons {
+    margin: 2px;
+    background-color: rgb(95, 98, 139);
+    border: 10;
+    border-radius: 5px;
+    border-color: rgb(117, 129, 173);
+    font-size: x-small;
+    width: 75px;
+    height: 30px;
+    color: white;
 }
