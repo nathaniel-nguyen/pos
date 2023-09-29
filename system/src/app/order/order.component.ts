@@ -8,24 +8,20 @@ import { MenuItem } from '../order.service';
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent {
-  menuItems = this.orderService.getMenuItems();
+  menuItems = this.orderService.menuItems;
+  foodTypes = this.orderService.foodTypes;
   items = this.orderService.getItems();
   amounts = this.orderService.getAmounts();
   tax = this.orderService.getTax();
   subtotal = this.orderService.getSubtotal();
   total = this.orderService.getTotal(this.subtotal, this.tax);
 
-  foodTypes = [
-    { name: "Pho" },
-    { name: "Bun" },
-    { name: "Bun Kho" },
-    { name: "Com Dia" },
-    { name: "Thai" },
-    { name: "Drinks" },
-  ];
-
   getMenuItemID(menuItem: MenuItem): number {
     return menuItem.id;
+  }
+
+  getMenuItemStringID(menuItem: MenuItem): string {
+    return menuItem.stringID;
   }
 
   getMenuItemName(menuItem: MenuItem): string {
@@ -34,6 +30,16 @@ export class OrderComponent {
 
   getMenuItemPrice(menuItem: MenuItem): number {
     return menuItem.price;
+  }
+
+  getItems(type: String) {
+    if (type == "All") {
+      this.menuItems = this.orderService.menuItems;
+    } else if (type == "Appetizer") {
+      this.getAppetizers();
+    } else if (type == "Pho") {
+      this.getPhos();
+    }
   }
 
   constructor(
@@ -65,5 +71,13 @@ export class OrderComponent {
     this.total = this.orderService.getTotal(this.subtotal, this.tax);
     this.items = this.orderService.getItems();
     this.amounts = this.orderService.getAmounts();
+  }
+
+  getAppetizers() {
+    this.menuItems = this.orderService.getAppetizers();
+  }
+
+  getPhos() {
+    this.menuItems = this.orderService.getPhos();
   }
 }

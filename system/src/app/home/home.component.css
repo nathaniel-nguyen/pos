@@ -1,0 +1,36 @@
+h1 {
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+    color: white;
+    font-family:'Trebuchet MS';
+    font-variant: small-caps;
+}
+
+.order {
+    margin-left: 33%;
+    font-size: small;
+    background-color: rgb(95, 98, 139);
+    border-radius: 5px;
+    border-color: rgb(117, 129, 173);
+    width: 10%;
+    height: 35px;
+    color: white;
+    font-family:'Trebuchet MS';
+    font-variant: small-caps;
+}
+
+
+.view {
+    font-size: small;
+    margin-top: 5px;
+    margin-left: 33%;
+    background-color: rgb(95, 98, 139);
+    border-radius: 5px;
+    border-color: rgb(117, 129, 173);
+    width: 10%;
+    height: 35px;
+    color: white;
+    font-family:'Trebuchet MS';
+    font-variant: small-caps;
+}
